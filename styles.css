@@ -1,0 +1,214 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;  
+}
+
+:root {
+    --gradient: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+    --pale-blue: hsl(243, 100%, 93%);
+    --grayish-blue: hsl(229, 7%, 55%);
+    --dark-blue: hsl(228, 56%, 26%);
+    --very-dark-blue: hsl(229, 57%, 11%);
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: "Raleway";
+    background-image: url(./images/bg-mobile.png);
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1em;
+}
+
+.fylo-card {
+    padding: 2.5em 7em 2.5em 2.5em;
+    background-color: var(--dark-blue);
+    border-radius: 0.5em;
+    border-top-right-radius: 6em;
+}
+
+.card-icons {
+    margin-top: 1.75em;
+}
+
+.icon-holder {
+    display: inline-block;
+    position: relative;
+    width: 45px;
+    height: 45px;
+    background-color: var(--very-dark-blue);
+    margin-right: 1em;
+    border-radius: 0.5em;
+    transition: 0.3s;
+} 
+
+.icon-holder:hover {
+    cursor: pointer;
+    transform: translateY(-15%);
+}
+
+.icon-holder img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.storage {
+    position: relative;
+    background-color: var(--dark-blue);
+    padding: 2em 3em 5em;
+    border-radius: 0.5em;
+    font-size: 0.9rem;
+}
+
+.storage-used {
+    color: var(--grayish-blue);
+    text-align: center;
+    margin-top: 0.25em;
+}
+
+.storage-used span {
+    color: var(--pale-blue);
+    font-weight: bold;
+}
+
+.storage-counter {
+    position: relative;
+    height: 20px;
+    margin: auto;
+    background-color: var(--very-dark-blue);
+    border-radius: 2em;
+    margin: 1em 0 0.5em;
+}
+.gradient-line {
+    position: absolute;
+    width: 80%;
+    top: 3px;
+    left: 3px;
+    bottom: 3px;
+    border-radius: 2em;
+    background: var(--gradient);
+    animation-name: gradient;
+    animation-duration: 2s;
+}
+
+.gradient-line::before {
+    content: "";
+    position: absolute;
+    background-color: var(--pale-blue);
+    width: 11px;
+    height: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 3px;
+    border-radius: 50%;
+}
+
+.storage-range {
+    display: flex;
+    justify-content: space-between;
+    color: var(--pale-blue);
+    padding: 2em 0;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.storage-left {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    width: fit-content;
+    padding: 0.8em 1.75em;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -2rem;
+    border-radius: 0.75em;
+    background-color: var(--pale-blue);
+    color: var(--grayish-blue);
+    font-weight: bold;
+}
+
+.storage-left-left {
+    color: var(--very-dark-blue);
+    font-size: 2.5rem;
+}
+
+.storage-left-right {
+    font-size: 0.8rem;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    body {
+        background-color: var(--very-dark-blue);
+        background-image: url(./images/bg-desktop.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .container {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        gap: 2em;
+    }
+
+    .storage {
+        padding: 2.5em 3em 3.75em;
+        width: 50%;
+        max-width: 600px;
+        height: fit-content;
+        align-self: flex-end;
+    }
+
+    .storage-used {
+        text-align: start;
+    }
+    
+    .storage-left {
+        top: -3rem;
+        right: -3em;
+        bottom: auto;
+        left: auto;
+        border-bottom-right-radius: 0;
+    }
+
+    .storage-left::after {
+        content: "";
+        position: absolute;
+        background-color: var(--pale-blue);
+        width: 20px;
+        height: 30px;
+        right: 0;
+        bottom: -10px;
+        transform: skewY(45deg);
+    }
+}
+
+@keyframes gradient {
+    0% {
+        width: 5%;
+    }
+
+    100% {
+        width: 80%;
+    }
+}
